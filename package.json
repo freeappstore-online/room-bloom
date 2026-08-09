@@ -1,0 +1,14 @@
+{
+  "name": "room-bloom",
+  "private": true,
+  "packageManager": "pnpm@10.30.3",
+  "engines": { "node": ">=22" },
+  "pnpm": { "onlyBuiltDependencies": ["esbuild"] },
+  "scripts": {
+    "dev": "pnpm --filter @room-bloom/web dev",
+    "build": "pnpm --filter @room-bloom/web build",
+    "preview": "pnpm --filter @room-bloom/web preview",
+    "typecheck": "pnpm --filter @room-bloom/web exec tsc -b",
+    "test": "pnpm --filter @room-bloom/web test"
+  }
+}
