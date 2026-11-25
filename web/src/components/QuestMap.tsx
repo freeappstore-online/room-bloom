@@ -1,4 +1,5 @@
 import type { MapArea, Quest, QuestRun } from "../types";
+import { todayStr } from "../store";
 
 interface Props {
   areas: MapArea[];
@@ -9,7 +10,7 @@ interface Props {
 }
 
 export function QuestMap({ areas, quests, runs, totalCompleted, onAreaClick }: Props) {
-  const today = new Date().toISOString().slice(0, 10);
+  const today = todayStr();
 
   const areaStats = (areaId: string) => {
     const areaQuests = quests.filter((q) => q.areaId === areaId);

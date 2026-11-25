@@ -38,8 +38,13 @@ export function saveState(s: AppState) {
   localStorage.setItem(KEY, JSON.stringify(s));
 }
 
+/** YYYY-MM-DD for the local calendar date (toISOString() would give the UTC date). */
+export function dateStr(d: Date) {
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
+}
+
 export function todayStr() {
-  return new Date().toISOString().slice(0, 10);
+  return dateStr(new Date());
 }
 
 export function uid() {

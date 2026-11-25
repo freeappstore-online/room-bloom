@@ -7,7 +7,7 @@ import { QuestMap } from "./components/QuestMap";
 import { CompletionScreen } from "./components/CompletionScreen";
 import type { Quest, QuestRun, AppState, MysteryBox } from "./types";
 import { ALL_BADGES, BADGE_RARITY_COLOR, getLevel, getNextLevel, rollBoxReward } from "./data";
-import { loadState, saveState, todayStr, uid, DEFAULT_STATE } from "./store";
+import { loadState, saveState, todayStr, dateStr, uid, DEFAULT_STATE } from "./store";
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -145,7 +145,7 @@ export default function App() {
     setState((prev) => {
       if (prev.lastActiveDate === t) return prev;
       const yest = new Date(); yest.setDate(yest.getDate() - 1);
-      const yStr = yest.toISOString().slice(0, 10);
+      const yStr = dateStr(yest);
       const newStreak = prev.lastActiveDate === yStr ? prev.streakDays : 0;
       return { ...prev, streakDays: newStreak };
     });
@@ -199,7 +199,7 @@ export default function App() {
 
         // Streak
         const yest = new Date(); yest.setDate(yest.getDate() - 1);
-        const yStr = yest.toISOString().slice(0, 10);
+        const yStr = dateStr(yest);
         const newStreak = prev.lastActiveDate === date
           ? prev.streakDays
           : prev.lastActiveDate === yStr
